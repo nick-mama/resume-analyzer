@@ -41,7 +41,7 @@ ${jobDescription}
 
 Return exactly this JSON structure:
 {
-  "match_score": <number 0-100, be precise and avoid rounding to the nearest 10. For example use 73 or 58 not 70 or 60>,
+  "match_score": <number 0-100, be precise and avoid rounding to the nearest 10. Do not use decimals. For example use 73 or 58 not 70 or 60>,
   "job_title": "<inferred job title>",
   "matched_keywords": ["<keyword1>", "<keyword2>"],
   "missing_keywords": ["<keyword1>", "<keyword2>"],
