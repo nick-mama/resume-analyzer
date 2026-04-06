@@ -68,6 +68,5 @@ npm run dev
 
 ## Planned Improvements
 
-- User authentication so each user only sees their own history
 - Resume rewrite suggestions powered by AI
 - Support for DOCX file uploads
