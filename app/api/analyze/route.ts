@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { extractText } from "unpdf";
 import Groq from "groq-sdk";
-import { supabase } from "@/lib/supabase";
+import { createSupabaseServer } from "@/lib/supabase-server";
 
 const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
 
@@ -60,7 +60,13 @@ Return exactly this JSON structure:
     const analysis = JSON.parse(clean);
 
     // Save to Supabase
+    const supabase = await createSupabaseServer();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
     const { error: dbError } = await supabase.from("analyses").insert({
+      user_id: user?.id,
       job_title: analysis.job_title,
       match_score: analysis.match_score,
       matched_keywords: analysis.matched_keywords,
